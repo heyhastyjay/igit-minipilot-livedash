@@ -25,7 +25,7 @@ Use Browse on the three path rows:
 - **Cole-Parmer log:** the PuTTY log. Mass flow is kept as the N2-equivalent reading.
 - **SpecView log:** the `.LOG` file, or a CSV already converted from it. Reactor temperature is Loop 1. Pressure is Loop 4. Inlet flow is the channel that holds a few SCCM above 300, 500, or 800 while gas is flowing. On the 19 November file that channel is `AIs-.Module5 Inp2`.
 
-**Start watching** is the button in the box on the left. **Run constants** is the box on the right. The inlet meter k value multiplies the SpecView inlet reading. Type it, then click **Save**. Save stores that value and redraws the graphs. A value of 1 leaves the logged reading unchanged. Typing alone does not change the graph.
+**Start watching** is the button in the box on the left. **Run constants** is the box on the right. The inlet meter k value multiplies the SpecView inlet reading. Type it, then click **Save**. Save stores that value and redraws the graphs. The box keeps three decimal places, so 0.970 stays 0.970. A value of 1.000 leaves the logged reading unchanged. Typing alone does not change the graph.
 
 SpecView's log is labeled UTC, but that computer's clock is set to Eastern time, so the dashboard reads those stamps as Eastern. Temperature and inlet flow are the nearest SpecView sample within 30 seconds. Outlet flow is the median of the Cole-Parmer readings inside the same 30 seconds, and at least ten readings are required. A checked calibration gas that contains CO2 supplies the feed composition from its CO, CO2, and methane percents.
 
@@ -36,3 +36,7 @@ The Calibration tab lists every result file. Check Cal gas on the tank injection
 The Method tab writes down each file, the equation applied to it, and the smoothing and assumptions, using the K and the calibration curve that are on the graph.
 
 The session, including the saved calibration, is written to `%USERPROFILE%\.sbu-live-dashboard.json` on the lab computer. This folder does not contain run data or a saved session. Each person points the three Browse rows at the files on that computer.
+
+## Changing the code
+
+Read `DEVELOPMENT.md` before editing. It is the handoff for the next person, or for a coding agent: file map, equations, clocks, and the interface rules that are easy to break.

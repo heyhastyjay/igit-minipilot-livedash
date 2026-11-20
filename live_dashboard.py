@@ -18,7 +18,7 @@ from tkinter import filedialog, ttk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 
-from engine import Dashboard, load_session, save_session
+from engine import Dashboard, format_inlet_k, load_session, save_session
 from plots import draw
 
 SESSION = Path.home() / ".sbu-live-dashboard.json"
@@ -81,7 +81,7 @@ class App(tk.Tk):
         constants = ttk.LabelFrame(controls, text="Run constants", padding=8)
         constants.pack(side="right", fill="y")
         ttk.Label(constants, text="inlet meter k value").grid(row=0, column=0, sticky="w")
-        self.inlet_k_text = tk.StringVar(value=f"{self.dash.inlet_k:g}")
+        self.inlet_k_text = tk.StringVar(value=format_inlet_k(self.dash.inlet_k))
         ttk.Entry(constants, textvariable=self.inlet_k_text, width=10).grid(row=0, column=1, sticky="w", padx=6)
         ttk.Button(constants, text="Save", command=self._save_constants).grid(row=0, column=2, sticky="w")
         ttk.Label(self, textvariable=self.status, padding=(8, 0)).pack(fill="x")
@@ -573,7 +573,7 @@ class App(tk.Tk):
     def _save_constants(self) -> None:
         text = self.inlet_k_text.get().strip()
         try:
-            k = float(text)
+            k = round(float(text), 3)
         except ValueError:
             self.status.set("inlet meter k value needs to be a number.")
             return
@@ -581,7 +581,7 @@ class App(tk.Tk):
             self.status.set("inlet meter k value needs to be greater than zero.")
             return
         self.dash.inlet_k = k
-        self.inlet_k_text.set(f"{k:g}")
+        self.inlet_k_text.set(format_inlet_k(k))
         self._persist()
         self._busy("Updating the graph…")
         try:
@@ -589,7 +589,7 @@ class App(tk.Tk):
             counted = sum(1 for point in self.dash.conversions() if point.conversion_pct is not None)
         finally:
             self._idle()
-        self.status.set(f"Saved. Inlet flow is the SpecView reading times {k:g}. {counted} injections have a carbon conversion.")
+        self.status.set(f"Saved. Inlet flow is the SpecView reading times {format_inlet_k(k)}. {counted} injections have a carbon conversion.")
 
     def _persist(self) -> None:
         payload = self.dash.to_json()

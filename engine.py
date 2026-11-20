@@ -36,6 +36,11 @@ GAS_KEY = {
 }
 
 
+def format_inlet_k(value: float) -> str:
+    """Three decimal places, so a typed 0.970 is not shown as 0.97."""
+    return f"{float(value):.3f}"
+
+
 @dataclass
 class CalEntry:
     injection: str
@@ -398,8 +403,8 @@ class Dashboard:
             + " A channel whose name contains sccm, mfc, feed flow, or inlet flow is used when one exists. Otherwise the reader keeps the unlabeled channel that spends time within 40 SCCM of 300, of 500, and of 800, with at least 30 samples near two of those rates. On the 19 November file that channel is AIs-.Module5 Inp2.",
             f"The value kept is the nearest sample within {MATCH_WINDOW_S:g} seconds. SpecView records about every 10 seconds, so the nearest sample is normally within 5 seconds. Thirty seconds still finds it if one record is missing. Two minutes is long enough to take the inlet from the wrong flow step, or about 2 °C of the wrong bed temperature on a 1 °C-per-minute ramp. A two-minute sample-line delay was checked on the 19 November run and did not improve the conversion, and the line volume was not measured, so no delay is added.",
             "A reading at or above 9,000, or below 0, is dropped. A reading above 20 is SCCM. A reading from 0.05 to 20 is treated as SLPM and multiplied by 1,000. Then the saved inlet meter K is applied:",
-            f"  F_sccm = K * reading = {self.inlet_k:g} * reading",
-            "K = 1 leaves the logged reading unchanged. The inlet line on the Run tab uses the same K. Readings outside 50 to 1,500 SCCM are left off that line. The conversion uses the nearest sample, not an average.",
+            f"  F_sccm = K * reading = {format_inlet_k(self.inlet_k)} * reading",
+            "K is kept to three decimal places. 1.000 leaves the logged reading unchanged. The inlet line on the Run tab uses the same K. Readings outside 50 to 1,500 SCCM are left off that line. The conversion uses the nearest sample, not an average.",
             "",
             "4. Calibration curve",
             "Checked calibration injections are the standards. For each gas the fit is a straight line from certified percent (x) to peak area (y). When the checked files include two different percents:",

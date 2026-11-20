@@ -30,4 +30,5 @@ Use Browse on the three path rows:
 
 Then click Start watching. The button is in the box on the left.
 The inlet meter k value is in the Run constants box on the right.
-Type the number, then click Save. Typing alone does not change the graph.
+Type the number, then click Save. Three decimal places stay, so 0.970 is still 0.970.
+Typing alone does not change the graph.
