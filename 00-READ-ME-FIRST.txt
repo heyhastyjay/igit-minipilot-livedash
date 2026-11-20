@@ -1,0 +1,33 @@
+HOW TO START THE DASHBOARD
+==========================
+
+Double-click START-DASHBOARD.bat
+
+A black window opens, checks that Python has what it needs, and then the
+dashboard window opens. Leave the black window open while you use the
+dashboard. Closing the black window closes the dashboard.
+
+
+If the black window says Python was not found
+----------------------------------------------
+
+1. Install Python 3.9 or newer from https://www.python.org/downloads/
+2. On the first installer page, check "Add python.exe to PATH".
+3. Double-click START-DASHBOARD.bat again.
+
+The first launch also needs an internet connection so it can install
+numpy and matplotlib. Later launches do not.
+
+
+After the window opens
+-----------------------
+
+Use Browse on the three path rows:
+
+  TotalChrom folder   the folder of .rst result files
+  Cole-Parmer log     the PuTTY flow log
+  SpecView log        the .LOG file, or a CSV made from it
+
+Then click Start watching. The button is in the box on the left.
+The inlet meter k value is in the Run constants box on the right.
+Type the number, then click Save. Typing alone does not change the graph.
