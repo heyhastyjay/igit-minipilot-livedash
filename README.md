@@ -1,5 +1,7 @@
 # Live dashboard
 
+Developed by Dr. Julia Hasty.
+
 ## Start
 
 On the lab computer, open this folder and double-click **START-DASHBOARD.bat**.

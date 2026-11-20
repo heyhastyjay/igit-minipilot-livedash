@@ -85,6 +85,7 @@ class App(tk.Tk):
         ttk.Entry(constants, textvariable=self.inlet_k_text, width=10).grid(row=0, column=1, sticky="w", padx=6)
         ttk.Button(constants, text="Save", command=self._save_constants).grid(row=0, column=2, sticky="w")
         ttk.Label(self, textvariable=self.status, padding=(8, 0)).pack(fill="x")
+        ttk.Label(self, text="Developed by Dr. Julia Hasty.", padding=(8, 4)).pack(side="bottom", fill="x")
 
         self.notebook = ttk.Notebook(self)
         self.notebook.pack(fill="both", expand=True, padx=8, pady=8)

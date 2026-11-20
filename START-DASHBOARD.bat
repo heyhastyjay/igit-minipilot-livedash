@@ -5,6 +5,7 @@ title SBU mini-pilot dashboard
 
 echo.
 echo  SBU mini-pilot live dashboard
+echo  Developed by Dr. Julia Hasty.
 echo  ------------------------------
 echo.
 echo  Leave this black window open while you use the dashboard.

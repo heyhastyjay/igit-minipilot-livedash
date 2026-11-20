@@ -1,6 +1,8 @@
 HOW TO START THE DASHBOARD
 ==========================
 
+Developed by Dr. Julia Hasty.
+
 Double-click START-DASHBOARD.bat
 
 A black window opens, checks that Python has what it needs, and then the

@@ -1,5 +1,7 @@
 # Development notes
 
+Developed by Dr. Julia Hasty.
+
 Read this before changing the dashboard. The lab user starts the program by double-clicking `START-DASHBOARD.bat`. This file is for the person, or the coding agent, who changes the program.
 
 The folder is the whole program. It does not contain run data. Each computer keeps its own session at `%USERPROFILE%\.sbu-live-dashboard.json` (on Linux, `~/.sbu-live-dashboard.json`). Do not commit that file. It holds local paths and the calibration that person has applied.
@@ -28,6 +30,8 @@ Three path rows, then one row of two boxes:
 - Right box: **Run constants**, with the label `inlet meter k value`, a text field, and **Save**.
 
 Tabs, in order: **Run**, **Calibration**, **Method**.
+
+The bottom of the window says `Developed by Dr. Julia Hasty.` Leave that credit in place.
 
 On startup the window forces three fields after loading the session, and does not reset `inlet_k`:
 
